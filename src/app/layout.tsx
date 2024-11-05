@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/header/Header";
-import Announcement from "@/components/header/Announcement";
 import Footer from "@/components/footer/Footer";
-import ScrollToTop from "@/components/home/ScrollToTop";
+import ReactQueryProvider from "@/providers/tanstackProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -32,10 +31,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Header />
-        {children}
-        <Footer />
-        
+        <ReactQueryProvider>
+          <Header />
+          {children}
+          <Footer />
+        </ReactQueryProvider>
       </body>
     </html>
   );
