@@ -6,7 +6,7 @@ import TreatmentCategory from "@/models/categories";
 export async function GET() {
   try {
     await connectToDatabase();
-    const categories = await TreatmentCategory.find();
+    const categories = await TreatmentCategory.find().populate("treatments");
     return NextResponse.json(
       { success: true, data: categories },
       { status: 200 }

@@ -33,7 +33,10 @@ export default function RootLayout({
       >
         <ReactQueryProvider>
           <Header />
+          <main className="bg-[#e4e9e1]">
+
           {children}
+          </main>
           <Footer />
         </ReactQueryProvider>
       </body>

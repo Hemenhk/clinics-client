@@ -1,4 +1,3 @@
-// components/home/ScrollToTop.tsx
 "use client";
 import { useState, useEffect } from "react";
 import { ChevronUp } from "lucide-react";
@@ -15,7 +14,6 @@ export default function ScrollToTop({ targetRef }: Props) {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          // Show button when the user reaches or scrolls past the target
           setIsVisible(
             entry.isIntersecting ||
               window.scrollY > entry.boundingClientRect.top
@@ -25,12 +23,10 @@ export default function ScrollToTop({ targetRef }: Props) {
       { threshold: 0.1 }
     );
 
-    // Observe the target element (Categories section)
     if (targetRef.current) {
       observer.observe(targetRef.current);
     }
 
-    // Cleanup observer on component unmount
     return () => {
       if (targetRef.current) {
         observer.unobserve(targetRef.current);
@@ -40,10 +36,9 @@ export default function ScrollToTop({ targetRef }: Props) {
 
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-    setIsVisible(false); // Hide button after scrolling to top
+    setIsVisible(false); 
   };
 
-  // Conditionally render the button only when isVisible is true
   return isVisible ? (
     <Button
       onClick={handleScrollToTop}

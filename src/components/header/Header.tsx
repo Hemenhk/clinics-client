@@ -4,6 +4,7 @@ import useScroll from "@/hooks/useScroll";
 import { Button } from "../ui/button";
 import Announcement from "./Announcement";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export default function Header() {
   const isScrolled = useScroll();
@@ -17,13 +18,14 @@ export default function Header() {
         className={`flex flex-row items-center h-[13vh] w-full justify-between bg-[#b0bdaa] px-10 transition-all duration-300 ease-in-out
           ${isHomePage && isScrolled ? "fixed top-0 z-50" : ""}`}
       >
-        <h3
+        <Link
+          href={"/"}
           className={`text-[#ebf1e9] transition-all duration-500 ease-out ${
             isHomePage && isScrolled ? "text-2xl" : "text-3xl"
           } font-semibold tracking-tight `}
         >
           Logo
-        </h3>
+        </Link>
         <div className="flex flex-row items-center gap-3">
           <nav>
             <ul className="flex flex-row gap-3 text-[#ebf1e9] text-lg">
